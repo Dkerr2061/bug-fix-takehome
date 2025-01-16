@@ -55,6 +55,13 @@ const BugForm = ({ addBug }: BugFormProps) => {
   function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
     addBug(newBug as unknown as BugProps);
+    setNewBug({
+      id: uuidv4(),
+      title: "",
+      description: "",
+      priority: "",
+      status: "",
+    });
   }
   return (
     <Container>

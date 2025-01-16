@@ -7,7 +7,6 @@ interface Props {
 }
 
 const BugList = ({ bugs, addBug }: Props) => {
-  // console.log(bugs);
   return (
     <div>
       <BugForm addBug={addBug} />

@@ -183,6 +183,14 @@
       "priority": "High",
       "status": "Resolved",
       "DateCreated": "2025-01-16T07:03:59.427Z"
+    },
+    {
+      "id": "cacaeb31-ab99-4863-81d2-54114cc5bb67",
+      "title": "Type Errors",
+      "description": "These types errors are going to be the end of me!",
+      "priority": "High",
+      "status": "In Progress",
+      "DateCreated": "2025-01-16T07:07:22.402Z"
     }
   ]
 }

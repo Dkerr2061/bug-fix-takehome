@@ -42,7 +42,6 @@ function App() {
           }),
         });
         const data = await res.json();
-        console.log(data);
         setBugs((prevBugs) => [...prevBugs, data]);
       } catch (error) {
         console.log(error);
