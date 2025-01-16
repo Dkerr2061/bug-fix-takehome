@@ -27,12 +27,38 @@ function App() {
     fetchData();
   }, []);
 
-  console.log(bugs);
+  // * Post request
+  function addBug(newBug: BugProps) {
+    const postBug = async () => {
+      try {
+        const res = await fetch("http://localhost:3000/bugs", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            ...newBug,
+            DateCreated: new Date().toISOString(),
+          }),
+        });
+        const data = await res.json();
+        console.log(data);
+        setBugs((prevBugs) => [...prevBugs, data]);
+      } catch (error) {
+        console.log(error);
+      }
+    };
+    postBug();
+  }
 
   const router = createBrowserRouter(
     createRoutesFromElements(
       <Route path="/">
-        <Route path="/" index element={<BugList bugs={bugs} />} />
+        <Route
+          path="/"
+          index
+          element={<BugList bugs={bugs} addBug={addBug} />}
+        />
         <Route path="/bugs/:id" element={<BugDetail />} />
       </Route>
     )

@@ -1,3 +1,4 @@
+import { v4 as uuidv4 } from "uuid";
 import {
   Box,
   Container,
@@ -9,9 +10,52 @@ import {
   TextField,
   Typography,
   Button,
+  SelectChangeEvent,
 } from "@mui/material";
+import { useState } from "react";
+import { BugProps } from "../types/bugTypes";
 
-const BugForm = () => {
+interface BugFormState {
+  id: string;
+  title: string;
+  description: string;
+  priority: string;
+  status: string;
+}
+interface BugFormProps {
+  addBug: (bug: BugProps) => void;
+}
+
+const BugForm = ({ addBug }: BugFormProps) => {
+  const [newBug, setNewBug] = useState<BugFormState>({
+    id: uuidv4(),
+    title: "",
+    description: "",
+    priority: "",
+    status: "",
+  });
+
+  const handleTextChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+  ) => {
+    const { name, value } = e.target;
+    setNewBug((prev) => ({
+      ...prev,
+      [name]: value,
+    }));
+  };
+
+  const handleSelectChange = (e: SelectChangeEvent) => {
+    const { name, value } = e.target;
+    setNewBug((prev) => ({
+      ...prev,
+      [name]: value,
+    }));
+  };
+  function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
+    e.preventDefault();
+    addBug(newBug as unknown as BugProps);
+  }
   return (
     <Container>
       <Paper
@@ -32,16 +76,23 @@ const BugForm = () => {
         <Box
           component="form"
           sx={{ display: "flex", p: 2, flexDirection: "column" }}
+          onSubmit={handleSubmit}
         >
           <TextField
             id="outlined-helperText"
             label="Title"
+            name="title"
+            value={newBug.title}
+            onChange={handleTextChange}
             placeholder="Quick snapshot of the bug"
             sx={{ mb: 2 }}
           />
           <TextField
             id="outlined-multiline-static"
             label="Description"
+            name="description"
+            value={newBug.description}
+            onChange={handleTextChange}
             multiline
             rows={4}
             placeholder="Please discribe what the bug that was found..."
@@ -59,9 +110,10 @@ const BugForm = () => {
               <Select
                 labelId="demo-simple-select-label"
                 id="demo-simple-select"
-                value=""
+                name="priority"
+                value={newBug.priority}
                 label="Priority"
-                onChange={(e) => console.log(e)}
+                onChange={handleSelectChange}
               >
                 <MenuItem value="Low">Low</MenuItem>
                 <MenuItem value="Medium">Medium</MenuItem>
@@ -73,9 +125,10 @@ const BugForm = () => {
               <Select
                 labelId="demo-simple-select-label"
                 id="demo-simple-select"
-                value=""
+                value={newBug.status}
+                name="status"
                 label="Status"
-                onChange={(e) => console.log(e)}
+                onChange={handleSelectChange}
               >
                 <MenuItem value="Open">Open</MenuItem>
                 <MenuItem value="In Progress">In Progress</MenuItem>

@@ -4,5 +4,5 @@ export type BugProps = {
   Description: string;
   Priority: "Low" | "Medium" | "High";
   Status: "Open" | "In Progress" | "Resolved";
-  DateCreated: Date;
+  DateCreated?: Date;
 };
