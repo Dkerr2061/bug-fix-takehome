@@ -1,0 +1,164 @@
+{
+  "bugs": [
+    {
+      "id": 1,
+      "Title": "Login button not responsive",
+      "Description": "The login button does not register clicks on mobile devices.",
+      "Priority": "High",
+      "Status": "Open",
+      "Date Created": "2025-01-15T10:30:00Z"
+    },
+    {
+      "id": 2,
+      "Title": "Page not found error",
+      "Description": "The About Us page returns a 404 error when accessed via the navigation bar.",
+      "Priority": "Medium",
+      "Status": "Open",
+      "Date Created": "2025-01-15T10:32:00Z"
+    },
+    {
+      "id": 3,
+      "Title": "API response timeout",
+      "Description": "The fetch request for user data times out after 5 seconds.",
+      "Priority": "High",
+      "Status": "In Progress",
+      "Date Created": "2025-01-15T10:34:00Z"
+    },
+    {
+      "id": 4,
+      "Title": "Broken image link on homepage",
+      "Description": "The hero image on the homepage fails to load due to an incorrect URL.",
+      "Priority": "Low",
+      "Status": "Resolved",
+      "Date Created": "2025-01-15T10:36:00Z"
+    },
+    {
+      "id": 5,
+      "Title": "Error message not displayed",
+      "Description": "The application does not show an error message when the server returns a 500 status.",
+      "Priority": "Medium",
+      "Status": "Open",
+      "Date Created": "2025-01-15T10:38:00Z"
+    },
+    {
+      "id": 6,
+      "Title": "Form validation not working",
+      "Description": "The email field allows invalid email addresses to be submitted.",
+      "Priority": "High",
+      "Status": "Open",
+      "Date Created": "2025-01-15T10:40:00Z"
+    },
+    {
+      "id": 7,
+      "Title": "Slow loading time on dashboard",
+      "Description": "Dashboard takes more than 10 seconds to load for users with large datasets.",
+      "Priority": "High",
+      "Status": "In Progress",
+      "Date Created": "2025-01-15T10:42:00Z"
+    },
+    {
+      "id": 8,
+      "Title": "Logout functionality broken",
+      "Description": "The logout button does not clear the session and redirect the user.",
+      "Priority": "High",
+      "Status": "Open",
+      "Date Created": "2025-01-15T10:44:00Z"
+    },
+    {
+      "id": 9,
+      "Title": "Search bar UI glitch",
+      "Description": "The search bar overlaps with the navigation menu on smaller screens.",
+      "Priority": "Low",
+      "Status": "Resolved",
+      "Date Created": "2025-01-15T10:46:00Z"
+    },
+    {
+      "id": 10,
+      "Title": "Missing translations",
+      "Description": "Some buttons and labels are not translated in the French version of the app.",
+      "Priority": "Medium",
+      "Status": "Open",
+      "Date Created": "2025-01-15T10:48:00Z"
+    },
+    {
+      "id": 11,
+      "Title": "Crash on submitting large files",
+      "Description": "Uploading files larger than 10MB causes the application to crash.",
+      "Priority": "High",
+      "Status": "In Progress",
+      "Date Created": "2025-01-15T10:50:00Z"
+    },
+    {
+      "id": 12,
+      "Title": "Profile picture upload fails",
+      "Description": "Users cannot upload profile pictures due to server validation errors.",
+      "Priority": "Medium",
+      "Status": "Open",
+      "Date Created": "2025-01-15T10:52:00Z"
+    },
+    {
+      "id": 13,
+      "Title": "Dark mode toggle not working",
+      "Description": "The dark mode setting is not preserved after refreshing the page.",
+      "Priority": "Low",
+      "Status": "Resolved",
+      "Date Created": "2025-01-15T10:54:00Z"
+    },
+    {
+      "id": 14,
+      "Title": "Pagination not functioning",
+      "Description": "Clicking next on the pagination component does not load the next set of results.",
+      "Priority": "Medium",
+      "Status": "Open",
+      "Date Created": "2025-01-15T10:56:00Z"
+    },
+    {
+      "id": 15,
+      "Title": "Incorrect total in cart",
+      "Description": "The total price in the shopping cart does not include discounts.",
+      "Priority": "High",
+      "Status": "Open",
+      "Date Created": "2025-01-15T10:58:00Z"
+    },
+    {
+      "id": 16,
+      "Title": "Notification bell unresponsive",
+      "Description": "The notification bell icon does not open the notifications panel.",
+      "Priority": "Low",
+      "Status": "Resolved",
+      "Date Created": "2025-01-15T11:00:00Z"
+    },
+    {
+      "id": 17,
+      "Title": "Session expiration issues",
+      "Description": "Sessions do not expire after the set timeout period.",
+      "Priority": "High",
+      "Status": "Open",
+      "Date Created": "2025-01-15T11:02:00Z"
+    },
+    {
+      "id": 18,
+      "Title": "Broken footer links",
+      "Description": "Links in the footer lead to incorrect or outdated pages.",
+      "Priority": "Low",
+      "Status": "Resolved",
+      "Date Created": "2025-01-15T11:04:00Z"
+    },
+    {
+      "id": 19,
+      "Title": "Sorting feature not working",
+      "Description": "The sort by price feature does not rearrange items correctly.",
+      "Priority": "Medium",
+      "Status": "Open",
+      "Date Created": "2025-01-15T11:06:00Z"
+    },
+    {
+      "id": 20,
+      "Title": "Keyboard navigation issue",
+      "Description": "Keyboard navigation skips over some interactive elements.",
+      "Priority": "Medium",
+      "Status": "In Progress",
+      "Date Created": "2025-01-15T11:08:00Z"
+    }
+  ]
+}
