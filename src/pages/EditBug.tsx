@@ -1,4 +1,4 @@
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import { BugProps } from "../types/bugTypes";
 import { useEffect, useState } from "react";
 import {
@@ -29,7 +29,7 @@ interface Props {
 }
 
 const BugDetail = ({ editBug }: Props) => {
-  // TODO FInish this component
+  const navigate = useNavigate();
   const { id } = useParams();
   const [bug, setBug] = useState<BugProps | null>(null);
   const [bugToEdit, setBugToEdit] = useState<BugProps>({
@@ -40,6 +40,8 @@ const BugDetail = ({ editBug }: Props) => {
     priority: "",
     dateCreated: "",
   });
+
+  // * This useEffect is used to get the corresponding bug from the database.
 
   useEffect(() => {
     const currentBug = async () => {
@@ -65,6 +67,7 @@ const BugDetail = ({ editBug }: Props) => {
   function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
     bug ? editBug(bug.id, { ...bugToEdit }) : "No bug to edit.";
+    navigate("/");
   }
   function handleOnChange(
     e:

@@ -80,6 +80,7 @@ const BugForm = ({ addBug }: BugFormProps) => {
             id="outlined-helperText"
             label="Title"
             name="title"
+            required
             value={newBug.title}
             onChange={handleOnChange}
             placeholder="Short title"
@@ -89,6 +90,7 @@ const BugForm = ({ addBug }: BugFormProps) => {
             id="outlined-multiline-static"
             label="Description"
             name="description"
+            required
             value={newBug.description}
             onChange={handleOnChange}
             multiline
@@ -109,6 +111,7 @@ const BugForm = ({ addBug }: BugFormProps) => {
                 labelId="demo-simple-select-label"
                 id="demo-simple-select"
                 name="priority"
+                required
                 value={newBug.priority}
                 label="Priority"
                 onChange={handleOnChange}
@@ -123,8 +126,9 @@ const BugForm = ({ addBug }: BugFormProps) => {
               <Select
                 labelId="demo-simple-select-label"
                 id="demo-simple-select"
-                value={newBug.status}
                 name="status"
+                required
+                value={newBug.status}
                 label="Status"
                 onChange={handleOnChange}
               >
