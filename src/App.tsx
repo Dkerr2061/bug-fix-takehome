@@ -54,7 +54,7 @@ function App() {
 
   // * Delete request
 
-  function removeBug(id: number) {
+  function removeBug(id: string) {
     const deleteBug = async () => {
       try {
         let answer = confirm("Are you sure that you want to delete this task?");

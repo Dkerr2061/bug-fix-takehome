@@ -12,10 +12,11 @@ import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import { useState } from "react";
 import { formatDate } from "../utils/formatDate";
 import { Chip } from "@mui/material";
+import { useNavigate } from "react-router-dom";
 
 interface Props {
   bugs: BugProps;
-  removeBug: (id: number) => void;
+  removeBug: (id: string) => void;
 }
 
 const BugItem = ({ bugs, removeBug }: Props) => {
@@ -23,9 +24,16 @@ const BugItem = ({ bugs, removeBug }: Props) => {
   const handleExpandClick = () => {
     setExpanded(!expanded);
   };
+  const navigate = useNavigate();
+
+  function navigateToEdit() {
+    navigate(`/bugs/${bugs.id}`);
+  }
+
   function handleDelete() {
     removeBug(bugs.id);
   }
+
   const formattedDate = formatDate(bugs.dateCreated);
   const cardStyle = {
     width: 400,
@@ -99,7 +107,7 @@ const BugItem = ({ bugs, removeBug }: Props) => {
         <CardContent>
           <Chip
             label="Edit"
-            onClick={handleDelete}
+            onClick={navigateToEdit}
             variant="filled"
             color="primary"
             icon={<ModeEditOutlineSharpIcon />}
