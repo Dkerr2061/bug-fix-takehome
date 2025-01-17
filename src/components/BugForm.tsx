@@ -91,7 +91,7 @@ const BugForm = ({ addBug }: BugFormProps) => {
             name="title"
             value={newBug.title}
             onChange={handleTextChange}
-            placeholder="Quick snapshot of the bug"
+            placeholder="Short title"
             sx={{ mb: 2 }}
           />
           <TextField

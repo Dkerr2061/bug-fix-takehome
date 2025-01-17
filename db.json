@@ -2,195 +2,163 @@
   "bugs": [
     {
       "id": "1",
-      "Title": "Login button not responsive",
-      "Description": "The login button does not register clicks on mobile devices.",
-      "Priority": "High",
-      "Status": "Open",
-      "Date Created": "2025-01-15T10:30:00Z"
+      "title": "Login button not responsive",
+      "description": "The login button does not register clicks on mobile devices.",
+      "priority": "High",
+      "status": "Open",
+      "dateCreated": "2025-01-13T09:27:53.812Z"
     },
     {
       "id": "2",
-      "Title": "Page not found error",
-      "Description": "The About Us page returns a 404 error when accessed via the navigation bar.",
-      "Priority": "Medium",
-      "Status": "Open",
-      "Date Created": "2025-01-15T10:32:00Z"
+      "title": "Page not found error",
+      "description": "The About Us page returns a 404 error when accessed via the navigation bar.",
+      "priority": "Medium",
+      "status": "Open",
+      "dateCreated": "2025-01-10T15:42:12.435Z"
     },
     {
       "id": "3",
-      "Title": "API response timeout",
-      "Description": "The fetch request for user data times out after 5 seconds.",
-      "Priority": "High",
-      "Status": "In Progress",
-      "Date Created": "2025-01-15T10:34:00Z"
+      "title": "API response timeout",
+      "description": "The fetch request for user data times out after 5 seconds.",
+      "priority": "High",
+      "status": "In Progress",
+      "dateCreated": "2025-01-12T18:11:04.287Z"
     },
     {
       "id": "4",
-      "Title": "Broken image link on homepage",
-      "Description": "The hero image on the homepage fails to load due to an incorrect URL.",
-      "Priority": "Low",
-      "Status": "Resolved",
-      "Date Created": "2025-01-15T10:36:00Z"
+      "title": "Broken image link on homepage",
+      "description": "The hero image on the homepage fails to load due to an incorrect URL.",
+      "priority": "Low",
+      "status": "Resolved",
+      "dateCreated": "2025-01-11T08:19:35.752Z"
     },
     {
       "id": "5",
-      "Title": "Error message not displayed",
-      "Description": "The application does not show an error message when the server returns a 500 status.",
-      "Priority": "Medium",
-      "Status": "Open",
-      "Date Created": "2025-01-15T10:38:00Z"
+      "title": "Error message not displayed",
+      "description": "The application does not show an error message when the server returns a 500 status.",
+      "priority": "Medium",
+      "status": "Open",
+      "dateCreated": "2025-01-14T20:07:23.985Z"
     },
     {
       "id": "6",
-      "Title": "Form validation not working",
-      "Description": "The email field allows invalid email addresses to be submitted.",
-      "Priority": "High",
-      "Status": "Open",
-      "Date Created": "2025-01-15T10:40:00Z"
+      "title": "Form validation not working",
+      "description": "The email field allows invalid email addresses to be submitted.",
+      "priority": "High",
+      "status": "Open",
+      "dateCreated": "2025-01-15T13:44:59.208Z"
     },
     {
       "id": "7",
-      "Title": "Slow loading time on dashboard",
-      "Description": "Dashboard takes more than 10 seconds to load for users with large datasets.",
-      "Priority": "High",
-      "Status": "In Progress",
-      "Date Created": "2025-01-15T10:42:00Z"
+      "title": "Slow loading time on dashboard",
+      "description": "Dashboard takes more than 10 seconds to load for users with large datasets.",
+      "priority": "High",
+      "status": "In Progress",
+      "dateCreated": "2025-01-12T16:53:21.493Z"
     },
     {
       "id": "8",
-      "Title": "Logout functionality broken",
-      "Description": "The logout button does not clear the session and redirect the user.",
-      "Priority": "High",
-      "Status": "Open",
-      "Date Created": "2025-01-15T10:44:00Z"
+      "title": "Logout functionality broken",
+      "description": "The logout button does not clear the session and redirect the user.",
+      "priority": "High",
+      "status": "Open",
+      "dateCreated": "2025-01-11T11:22:48.605Z"
     },
     {
       "id": "9",
-      "Title": "Search bar UI glitch",
-      "Description": "The search bar overlaps with the navigation menu on smaller screens.",
-      "Priority": "Low",
-      "Status": "Resolved",
-      "Date Created": "2025-01-15T10:46:00Z"
+      "title": "Search bar UI glitch",
+      "description": "The search bar overlaps with the navigation menu on smaller screens.",
+      "priority": "Low",
+      "status": "Resolved",
+      "dateCreated": "2025-01-10T14:16:37.904Z"
     },
     {
       "id": "10",
-      "Title": "Missing translations",
-      "Description": "Some buttons and labels are not translated in the French version of the app.",
-      "Priority": "Medium",
-      "Status": "Open",
-      "Date Created": "2025-01-15T10:48:00Z"
+      "title": "Missing translations",
+      "description": "Some buttons and labels are not translated in the French version of the app.",
+      "priority": "Medium",
+      "status": "Open",
+      "dateCreated": "2025-01-13T17:29:13.340Z"
     },
     {
       "id": "11",
-      "Title": "Crash on submitting large files",
-      "Description": "Uploading files larger than 10MB causes the application to crash.",
-      "Priority": "High",
-      "Status": "In Progress",
-      "Date Created": "2025-01-15T10:50:00Z"
+      "title": "Crash on submitting large files",
+      "description": "Uploading files larger than 10MB causes the application to crash.",
+      "priority": "High",
+      "status": "In Progress",
+      "dateCreated": "2025-01-14T07:55:29.122Z"
     },
     {
       "id": "12",
-      "Title": "Profile picture upload fails",
-      "Description": "Users cannot upload profile pictures due to server validation errors.",
-      "Priority": "Medium",
-      "Status": "Open",
-      "Date Created": "2025-01-15T10:52:00Z"
+      "title": "Profile picture upload fails",
+      "description": "Users cannot upload profile pictures due to server validation errors.",
+      "priority": "Medium",
+      "status": "Open",
+      "dateCreated": "2025-01-15T10:23:44.769Z"
     },
     {
       "id": "13",
-      "Title": "Dark mode toggle not working",
-      "Description": "The dark mode setting is not preserved after refreshing the page.",
-      "Priority": "Low",
-      "Status": "Resolved",
-      "Date Created": "2025-01-15T10:54:00Z"
+      "title": "Dark mode toggle not working",
+      "description": "The dark mode setting is not preserved after refreshing the page.",
+      "priority": "Low",
+      "status": "Resolved",
+      "dateCreated": "2025-01-16T05:44:11.914Z"
     },
     {
       "id": "14",
-      "Title": "Pagination not functioning",
-      "Description": "Clicking next on the pagination component does not load the next set of results.",
-      "Priority": "Medium",
-      "Status": "Open",
-      "Date Created": "2025-01-15T10:56:00Z"
+      "title": "Pagination not functioning",
+      "description": "Clicking next on the pagination component does not load the next set of results.",
+      "priority": "Medium",
+      "status": "Open",
+      "dateCreated": "2025-01-15T18:33:25.647Z"
     },
     {
       "id": "15",
-      "Title": "Incorrect total in cart",
-      "Description": "The total price in the shopping cart does not include discounts.",
-      "Priority": "High",
-      "Status": "Open",
-      "Date Created": "2025-01-15T10:58:00Z"
+      "title": "Incorrect total in cart",
+      "description": "The total price in the shopping cart does not include discounts.",
+      "priority": "High",
+      "status": "Open",
+      "dateCreated": "2025-01-13T14:45:37.062Z"
     },
     {
       "id": "16",
-      "Title": "Notification bell unresponsive",
-      "Description": "The notification bell icon does not open the notifications panel.",
-      "Priority": "Low",
-      "Status": "Resolved",
-      "Date Created": "2025-01-15T11:00:00Z"
+      "title": "Notification bell unresponsive",
+      "description": "The notification bell icon does not open the notifications panel.",
+      "priority": "Low",
+      "status": "Resolved",
+      "dateCreated": "2025-01-14T06:12:31.828Z"
     },
     {
       "id": "17",
-      "Title": "Session expiration issues",
-      "Description": "Sessions do not expire after the set timeout period.",
-      "Priority": "High",
-      "Status": "Open",
-      "Date Created": "2025-01-15T11:02:00Z"
+      "title": "Session expiration issues",
+      "description": "Sessions do not expire after the set timeout period.",
+      "priority": "High",
+      "status": "Open",
+      "dateCreated": "2025-01-15T04:22:18.303Z"
     },
     {
       "id": "18",
-      "Title": "Broken footer links",
-      "Description": "Links in the footer lead to incorrect or outdated pages.",
-      "Priority": "Low",
-      "Status": "Resolved",
-      "Date Created": "2025-01-15T11:04:00Z"
+      "title": "Broken footer links",
+      "description": "Links in the footer lead to incorrect or outdated pages.",
+      "priority": "Low",
+      "status": "Resolved",
+      "dateCreated": "2025-01-11T09:38:41.540Z"
     },
     {
       "id": "19",
-      "Title": "Sorting feature not working",
-      "Description": "The sort by price feature does not rearrange items correctly.",
-      "Priority": "Medium",
-      "Status": "Open",
-      "Date Created": "2025-01-15T11:06:00Z"
+      "title": "Sorting feature not working",
+      "description": "The sort by price feature does not rearrange items correctly.",
+      "priority": "Medium",
+      "status": "Open",
+      "dateCreated": "2025-01-12T21:50:57.112Z"
     },
     {
       "id": "20",
-      "Title": "Keyboard navigation issue",
-      "Description": "Keyboard navigation skips over some interactive elements.",
-      "Priority": "Medium",
-      "Status": "In Progress",
-      "Date Created": "2025-01-15T11:08:00Z"
-    },
-    {
-      "id": "bb0e",
-      "Title": "Test Bug",
-      "Description": "Test",
-      "Priority": "Low",
-      "Status": "Open",
-      "DateCreated": "2025-01-15T00:00:00.000Z"
-    },
-    {
-      "id": "a480f167-e915-41c0-a468-788ea96652ac",
-      "title": "Types",
-      "description": "types",
+      "title": "Keyboard navigation issue",
+      "description": "Keyboard navigation skips over some interactive elements.",
       "priority": "Medium",
       "status": "In Progress",
-      "DateCreated": "2025-01-16T07:03:11.808Z"
-    },
-    {
-      "id": "a480f167-e915-41c0-a468-788ea96652ac",
-      "title": "More tests",
-      "description": "This is a test ",
-      "priority": "High",
-      "status": "Resolved",
-      "DateCreated": "2025-01-16T07:03:59.427Z"
-    },
-    {
-      "id": "cacaeb31-ab99-4863-81d2-54114cc5bb67",
-      "title": "Type Errors",
-      "description": "These types errors are going to be the end of me!",
-      "priority": "High",
-      "status": "In Progress",
-      "DateCreated": "2025-01-16T07:07:22.402Z"
+      "dateCreated": "2025-01-16T02:19:24.993Z"
     }
   ]
 }

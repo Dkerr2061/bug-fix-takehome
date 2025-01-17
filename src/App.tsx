@@ -14,6 +14,8 @@ function App() {
   const [bugs, setBugs] = useState<BugProps[]>([]);
 
   // API functions go here
+
+  // * Get request
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -38,7 +40,7 @@ function App() {
           },
           body: JSON.stringify({
             ...newBug,
-            DateCreated: new Date().toISOString(),
+            dateCreated: new Date().toISOString(),
           }),
         });
         const data = await res.json();
@@ -50,13 +52,39 @@ function App() {
     postBug();
   }
 
+  // * Delete request
+
+  function removeBug(id: number) {
+    const deleteBug = async () => {
+      try {
+        let answer = confirm("Are you sure that you want to delete this task?");
+        if (!answer) return;
+
+        await fetch(`http://localhost:3000/bugs/${id}`, {
+          method: "DELETE",
+        });
+
+        setBugs(
+          bugs.filter((bug) => {
+            return bug.id !== id;
+          })
+        );
+      } catch (error) {
+        console.log(error);
+      }
+    };
+    deleteBug();
+  }
+
   const router = createBrowserRouter(
     createRoutesFromElements(
       <Route path="/">
         <Route
           path="/"
           index
-          element={<BugList bugs={bugs} addBug={addBug} />}
+          element={
+            <BugList bugs={bugs} addBug={addBug} removeBug={removeBug} />
+          }
         />
         <Route path="/bugs/:id" element={<BugDetail />} />
       </Route>

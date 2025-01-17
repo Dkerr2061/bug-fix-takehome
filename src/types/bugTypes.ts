@@ -1,8 +1,8 @@
 export type BugProps = {
   id: number;
-  Title: string;
-  Description: string;
-  Priority: "Low" | "Medium" | "High";
-  Status: "Open" | "In Progress" | "Resolved";
-  DateCreated?: Date;
+  title: string;
+  description: string;
+  priority: "Low" | "Medium" | "High";
+  status: "Open" | "In Progress" | "Resolved";
+  dateCreated: string;
 };
