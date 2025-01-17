@@ -6,7 +6,7 @@ import {
 } from "react-router-dom";
 import { useEffect, useState } from "react";
 import "./App.css";
-import BugDetail from "./pages/BugDetail";
+import BugDetail from "./pages/EditBug";
 import BugList from "./components/BugList";
 import { BugProps } from "./types/bugTypes";
 
@@ -52,6 +52,29 @@ function App() {
     postBug();
   }
 
+  // * Patch request
+
+  function editBug(id: string, updateBug: BugProps) {
+    const submitEdit = async () => {
+      try {
+        const res = await fetch(`http://localhost:3000/bugs/${id}`, {
+          method: "PATCH",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(updateBug),
+        });
+        const data = await res.json();
+        setBugs((prevBug) => {
+          return prevBug.map((bug) => (bug.id === data.id ? data : bug));
+        });
+      } catch (error) {
+        console.log(error);
+      }
+    };
+    submitEdit();
+  }
+
   // * Delete request
 
   function removeBug(id: string) {
@@ -86,7 +109,7 @@ function App() {
             <BugList bugs={bugs} addBug={addBug} removeBug={removeBug} />
           }
         />
-        <Route path="/bugs/:id" element={<BugDetail />} />
+        <Route path="/bugs/:id" element={<BugDetail editBug={editBug} />} />
       </Route>
     )
   );

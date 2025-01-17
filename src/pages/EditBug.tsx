@@ -1,59 +1,80 @@
-import { v4 as uuidv4 } from "uuid";
+import { useParams } from "react-router-dom";
+import { BugProps } from "../types/bugTypes";
+import { useEffect, useState } from "react";
 import {
-  Box,
   Container,
+  Paper,
+  Typography,
+  Box,
+  TextField,
   FormControl,
   InputLabel,
-  MenuItem,
-  Paper,
   Select,
-  TextField,
-  Typography,
+  MenuItem,
   Button,
   SelectChangeEvent,
 } from "@mui/material";
-import { useState } from "react";
-import { BugProps } from "../types/bugTypes";
 
-interface BugFormState {
+interface BugResponse {
   id: string;
   title: string;
   description: string;
-  priority: string;
-  status: string;
-}
-interface BugFormProps {
-  addBug: (bug: BugProps) => void;
+  priority: "" | "Low" | "Medium" | "High";
+  status: "" | "Open" | "In Progress" | "Resolved";
+  dateCreated: string;
 }
 
-const BugForm = ({ addBug }: BugFormProps) => {
-  const [newBug, setNewBug] = useState<BugFormState>({
-    id: uuidv4(),
+interface Props {
+  editBug: (id: string, bug: BugProps) => void;
+}
+
+const BugDetail = ({ editBug }: Props) => {
+  // TODO FInish this component
+  const { id } = useParams();
+  const [bug, setBug] = useState<BugProps | null>(null);
+  const [bugToEdit, setBugToEdit] = useState<BugProps>({
+    id: "",
     title: "",
     description: "",
-    priority: "",
     status: "",
+    priority: "",
+    dateCreated: "",
   });
 
+  useEffect(() => {
+    const currentBug = async () => {
+      try {
+        const res = await fetch(`http://localhost:3000/bugs/${id}`);
+        const data: BugResponse = await res.json();
+        setBug(data);
+        setBugToEdit({
+          id: data.id,
+          title: data.title,
+          description: data.description,
+          status: data.status,
+          priority: data.priority,
+          dateCreated: data.dateCreated,
+        });
+      } catch (error) {
+        console.log(error);
+      }
+    };
+    currentBug();
+  }, [id]);
+
+  function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
+    e.preventDefault();
+    bug ? editBug(bug.id, { ...bugToEdit }) : "No bug to edit.";
+  }
   function handleOnChange(
     e:
       | SelectChangeEvent
       | React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
   ) {
     const { name, value } = e.target;
-    setNewBug({ ...newBug, [name]: value });
+    setBugToEdit({ ...bugToEdit, [name]: value });
   }
-  function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
-    e.preventDefault();
-    addBug(newBug as unknown as BugProps);
-    setNewBug({
-      id: uuidv4(),
-      title: "",
-      description: "",
-      priority: "",
-      status: "",
-    });
-  }
+
   return (
     <Container>
       <Paper
@@ -80,7 +101,7 @@ const BugForm = ({ addBug }: BugFormProps) => {
             id="outlined-helperText"
             label="Title"
             name="title"
-            value={newBug.title}
+            value={bugToEdit.title}
             onChange={handleOnChange}
             placeholder="Short title"
             sx={{ mb: 2 }}
@@ -89,7 +110,7 @@ const BugForm = ({ addBug }: BugFormProps) => {
             id="outlined-multiline-static"
             label="Description"
             name="description"
-            value={newBug.description}
+            value={bugToEdit.description}
             onChange={handleOnChange}
             multiline
             rows={4}
@@ -109,7 +130,7 @@ const BugForm = ({ addBug }: BugFormProps) => {
                 labelId="demo-simple-select-label"
                 id="demo-simple-select"
                 name="priority"
-                value={newBug.priority}
+                value={bugToEdit.priority}
                 label="Priority"
                 onChange={handleOnChange}
               >
@@ -123,7 +144,7 @@ const BugForm = ({ addBug }: BugFormProps) => {
               <Select
                 labelId="demo-simple-select-label"
                 id="demo-simple-select"
-                value={newBug.status}
+                value={bugToEdit.status}
                 name="status"
                 label="Status"
                 onChange={handleOnChange}
@@ -143,4 +164,4 @@ const BugForm = ({ addBug }: BugFormProps) => {
   );
 };
 
-export default BugForm;
+export default BugDetail;
