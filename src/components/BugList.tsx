@@ -42,14 +42,18 @@ const BugList = ({ bugs, addBug, removeBug, updateSearchText }: Props) => {
           placeItems: "center",
         }}
       >
-        <Box sx={{ mt: 1, mb: 3, width: "75%" }}>
-          <FilterSortBar updateSearchText={updateSearchText} />
+        <Box sx={{ mt: 1, mb: 3, width: "100%" }}>
+          <FilterSortBar updateSearchText={updateSearchText} bugs={bugs} />
         </Box>
         <Box
           sx={{
             display: "grid",
             gridTemplateColumns: "repeat(3, 1fr)",
             gap: 3,
+            backgroundColor: "#ccc",
+            m: 2,
+            p: 2,
+            borderRadius: "10px",
           }}
         >
           {displayBug}
