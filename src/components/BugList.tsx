@@ -2,14 +2,18 @@ import { BugProps } from "../types/bugTypes";
 import BugForm from "./BugForm";
 import BugItem from "./BugItem";
 import { Box, Paper } from "@mui/material";
+import FilterSortBar from "./FilterSortBar";
 
 interface Props {
   bugs: BugProps[];
   addBug: (bug: BugProps) => void;
   removeBug: (id: string) => void;
+  updateSearchText: (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+  ) => void;
 }
 
-const BugList = ({ bugs, addBug, removeBug }: Props) => {
+const BugList = ({ bugs, addBug, removeBug, updateSearchText }: Props) => {
   const displayBug = bugs.map((bug) => {
     return <BugItem key={bug.id} bugs={bug} removeBug={removeBug} />;
   });
@@ -32,14 +36,24 @@ const BugList = ({ bugs, addBug, removeBug }: Props) => {
           p: 3,
           mt: 3,
           width: "auto",
-          display: "grid",
-          gridTemplateColumns: "repeat(3, 1fr)",
-          gap: 3,
+          display: "flex",
+          flexDirection: "column",
           background: "#a6bfbc",
           placeItems: "center",
         }}
       >
-        {displayBug}
+        <Box sx={{ mt: 1, mb: 3, width: "75%" }}>
+          <FilterSortBar updateSearchText={updateSearchText} />
+        </Box>
+        <Box
+          sx={{
+            display: "grid",
+            gridTemplateColumns: "repeat(3, 1fr)",
+            gap: 3,
+          }}
+        >
+          {displayBug}
+        </Box>
       </Paper>
     </Box>
   );

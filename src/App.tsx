@@ -12,6 +12,7 @@ import { BugProps } from "./types/bugTypes";
 
 function App() {
   const [bugs, setBugs] = useState<BugProps[]>([]);
+  const [searchText, setSearchText] = useState<string>("");
 
   // API functions go here
 
@@ -99,6 +100,23 @@ function App() {
     deleteBug();
   }
 
+  // * Search bar functionality
+  const filteredBugs = bugs.filter((bug) => {
+    return (
+      searchText === "" ||
+      bug.priority.toLowerCase().includes(searchText.toLowerCase()) ||
+      bug.status.toLowerCase().includes(searchText.toLowerCase())
+    );
+  });
+  function updateSearchText(
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+  ) {
+    const { value } = e.target;
+    console.log(value);
+    setSearchText(value);
+  }
+  console.log(filteredBugs);
+
   const router = createBrowserRouter(
     createRoutesFromElements(
       <Route path="/">
@@ -106,7 +124,12 @@ function App() {
           path="/"
           index
           element={
-            <BugList bugs={bugs} addBug={addBug} removeBug={removeBug} />
+            <BugList
+              bugs={filteredBugs}
+              addBug={addBug}
+              removeBug={removeBug}
+              updateSearchText={updateSearchText}
+            />
           }
         />
         <Route path="/bugs/:id" element={<BugDetail editBug={editBug} />} />

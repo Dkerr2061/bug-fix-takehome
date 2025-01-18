@@ -54,6 +54,7 @@ const BugForm = ({ addBug }: BugFormProps) => {
       status: "",
     });
   }
+
   return (
     <Container>
       <Paper
