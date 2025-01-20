@@ -1,15 +1,17 @@
 import { Box, MenuItem, TextField } from "@mui/material";
-import { BugProps } from "../types/bugTypes";
 
 interface Props {
   updateSearchText: (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
   ) => void;
-  bugs: BugProps[];
+  sortByDate: (
+    e: React.ChangeEvent<
+      HTMLSelectElement | HTMLInputElement | HTMLTextAreaElement
+    >
+  ) => void;
 }
 
-const FilterSortBar = ({ updateSearchText, bugs }: Props) => {
-  console.log(bugs);
+const FilterSortBar = ({ updateSearchText, sortByDate }: Props) => {
   return (
     <Box
       sx={{
@@ -38,10 +40,13 @@ const FilterSortBar = ({ updateSearchText, bugs }: Props) => {
           variant="outlined"
           select
           defaultValue="Select"
+          onChange={(e) => sortByDate(e)}
           placeholder="Sort by Date"
           sx={{ backgroundColor: "#fff", border: "none", borderRadius: "10px" }}
         >
-          <MenuItem value="Select">Sort by Date</MenuItem>
+          <MenuItem value="Select" disabled>
+            Sort by Date
+          </MenuItem>
           <MenuItem value="Newest">Newest</MenuItem>
           <MenuItem value="Oldest">Oldest</MenuItem>
         </TextField>

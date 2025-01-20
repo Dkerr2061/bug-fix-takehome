@@ -11,9 +11,20 @@ interface Props {
   updateSearchText: (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
   ) => void;
+  sortByDate: (
+    e: React.ChangeEvent<
+      HTMLSelectElement | HTMLInputElement | HTMLTextAreaElement
+    >
+  ) => void;
 }
 
-const BugList = ({ bugs, addBug, removeBug, updateSearchText }: Props) => {
+const BugList = ({
+  bugs,
+  addBug,
+  removeBug,
+  updateSearchText,
+  sortByDate,
+}: Props) => {
   const displayBug = bugs.map((bug) => {
     return <BugItem key={bug.id} bugs={bug} removeBug={removeBug} />;
   });
@@ -43,7 +54,10 @@ const BugList = ({ bugs, addBug, removeBug, updateSearchText }: Props) => {
         }}
       >
         <Box sx={{ mt: 1, mb: 3, width: "100%" }}>
-          <FilterSortBar updateSearchText={updateSearchText} bugs={bugs} />
+          <FilterSortBar
+            updateSearchText={updateSearchText}
+            sortByDate={sortByDate}
+          />
         </Box>
         <Box
           sx={{

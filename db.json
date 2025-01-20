@@ -13,7 +13,7 @@
       "title": "Page not found error",
       "description": "The About Us page returns a 404 error when accessed via the navigation bar.",
       "priority": "Medium",
-      "status": "Open",
+      "status": "Resolved",
       "dateCreated": "2025-01-10T15:42:12.435Z"
     },
     {
@@ -175,6 +175,22 @@
       "priority": "Low",
       "status": "Open",
       "dateCreated": "2025-01-17T21:20:58.900Z"
+    },
+    {
+      "id": "6be79c0b-c71c-44f9-ae10-763e83b65bbb",
+      "title": "Test 1",
+      "description": "modified",
+      "priority": "Low",
+      "status": "Resolved",
+      "dateCreated": "2025-01-18T16:13:26.093Z"
+    },
+    {
+      "id": "826d109f-9ede-4477-a182-4836c4602345",
+      "title": "Sorted test",
+      "description": "Seeing if the sort function works",
+      "priority": "High",
+      "status": "Open",
+      "dateCreated": "2025-01-20T20:04:55.204Z"
     }
   ]
 }

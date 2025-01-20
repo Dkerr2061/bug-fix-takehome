@@ -112,10 +112,31 @@ function App() {
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
   ) {
     const { value } = e.target;
-    console.log(value);
     setSearchText(value);
   }
-  console.log(filteredBugs);
+
+  // * Filter by dates
+  function sortByDate(
+    e: React.ChangeEvent<
+      HTMLSelectElement | HTMLInputElement | HTMLTextAreaElement
+    >
+  ) {
+    const { value } = e.target;
+    const bugsToSort = [...bugs];
+    const sortedBugs = bugsToSort.sort((a, b) => {
+      const dateA = new Date(a.dateCreated).getTime();
+      const dateB = new Date(b.dateCreated).getTime();
+
+      if (value === "Newest") {
+        return dateB - dateA;
+      } else if (value === "Oldest") {
+        return dateA - dateB;
+      }
+      return 0;
+    });
+
+    setBugs(sortedBugs);
+  }
 
   const router = createBrowserRouter(
     createRoutesFromElements(
@@ -129,6 +150,7 @@ function App() {
               addBug={addBug}
               removeBug={removeBug}
               updateSearchText={updateSearchText}
+              sortByDate={sortByDate}
             />
           }
         />
