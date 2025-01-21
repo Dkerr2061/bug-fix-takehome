@@ -17,14 +17,14 @@ import {
 import { db } from "../config/firebase";
 import { getDoc, doc } from "firebase/firestore";
 
-interface BugResponse {
-  id: string;
-  title: string;
-  description: string;
-  priority: "" | "Low" | "Medium" | "High";
-  status: "" | "Open" | "In Progress" | "Resolved";
-  dateCreated: string;
-}
+// interface BugResponse {
+//   id: string;
+//   title: string;
+//   description: string;
+//   priority: "" | "Low" | "Medium" | "High";
+//   status: "" | "Open" | "In Progress" | "Resolved";
+//   dateCreated: string;
+// }
 
 interface Props {
   editBug: (id: string, bug: BugProps) => void;
