@@ -9,45 +9,52 @@ import "./App.css";
 import BugDetail from "./pages/EditBug";
 import BugList from "./components/BugList";
 import { BugProps } from "./types/bugTypes";
+import { db } from "./config/firebase";
+import {
+  collection,
+  getDocs,
+  addDoc,
+  updateDoc,
+  deleteDoc,
+  doc,
+} from "firebase/firestore";
 
 function App() {
   const [bugs, setBugs] = useState<BugProps[]>([]);
   const [searchText, setSearchText] = useState<string>("");
+  const [sortOrder, setSortOrder] = useState<string>("");
+  const bugsCollectionRef = collection(db, "bugs");
 
   // API functions go here
 
   // * Get request
+
   useEffect(() => {
-    const fetchData = async () => {
+    const getBugList = async () => {
       try {
-        const res = await fetch("http://localhost:3000/bugs");
-        const data = await res.json();
-        setBugs(data);
-      } catch (error) {
-        console.log("There was an error fetching the data.", error);
+        const data = await getDocs(bugsCollectionRef);
+        const filteredData = data.docs.map((doc) => ({
+          ...(doc.data() as BugProps),
+          id: doc.id,
+        }));
+        setBugs(filteredData);
+      } catch (err) {
+        console.error(err);
       }
     };
-    fetchData();
-  }, []);
+    getBugList();
+  }, [bugs]);
 
   // * Post request
   function addBug(newBug: BugProps) {
     const postBug = async () => {
       try {
-        const res = await fetch("http://localhost:3000/bugs", {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({
-            ...newBug,
-            dateCreated: new Date().toISOString(),
-          }),
+        await addDoc(bugsCollectionRef, {
+          ...newBug,
+          dateCreated: new Date().toISOString(),
         });
-        const data = await res.json();
-        setBugs((prevBugs) => [...prevBugs, data]);
-      } catch (error) {
-        console.log(error);
+      } catch (err) {
+        console.error(err);
       }
     };
     postBug();
@@ -58,17 +65,13 @@ function App() {
   function editBug(id: string, updateBug: BugProps) {
     const submitEdit = async () => {
       try {
-        const res = await fetch(`http://localhost:3000/bugs/${id}`, {
-          method: "PATCH",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify(updateBug),
-        });
-        const data = await res.json();
-        setBugs((prevBug) => {
-          return prevBug.map((bug) => (bug.id === data.id ? data : bug));
-        });
+        const bugDoc = doc(db, "bugs", id);
+        await updateDoc(bugDoc, { ...updateBug });
+        setBugs((prevBugs) =>
+          prevBugs.map((bug) =>
+            bug.id === id ? { ...bug, ...updateBug } : bug
+          )
+        );
       } catch (error) {
         console.log(error);
       }
@@ -83,31 +86,32 @@ function App() {
       try {
         let answer = confirm("Are you sure that you want to delete this task?");
         if (!answer) return;
-
-        await fetch(`http://localhost:3000/bugs/${id}`, {
-          method: "DELETE",
-        });
-
-        setBugs(
-          bugs.filter((bug) => {
-            return bug.id !== id;
-          })
-        );
+        const bugDoc = doc(db, "bugs", id);
+        await deleteDoc(bugDoc);
       } catch (error) {
-        console.log(error);
+        console.error(error);
       }
     };
     deleteBug();
   }
 
   // * Search bar functionality
-  const filteredBugs = bugs.filter((bug) => {
-    return (
-      searchText === "" ||
-      bug.priority.toLowerCase().includes(searchText.toLowerCase()) ||
-      bug.status.toLowerCase().includes(searchText.toLowerCase())
-    );
-  });
+  const filteredBugs = bugs
+    .filter((bug) => {
+      return (
+        searchText === "" ||
+        bug.priority.toLowerCase().includes(searchText.toLowerCase()) ||
+        bug.status.toLowerCase().includes(searchText.toLowerCase())
+      );
+    })
+    .sort((a, b) => {
+      if (sortOrder === "") return 0;
+      const dateA = new Date(a.dateCreated).getTime();
+      const dateB = new Date(b.dateCreated).getTime();
+      return sortOrder === "Newest" ? dateB - dateA : dateA - dateB;
+    });
+
+  // * Search text
   function updateSearchText(
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
   ) {
@@ -122,17 +126,13 @@ function App() {
     >
   ) {
     const { value } = e.target;
+    setSortOrder(value);
     const bugsToSort = [...bugs];
     const sortedBugs = bugsToSort.sort((a, b) => {
       const dateA = new Date(a.dateCreated).getTime();
       const dateB = new Date(b.dateCreated).getTime();
 
-      if (value === "Newest") {
-        return dateB - dateA;
-      } else if (value === "Oldest") {
-        return dateA - dateB;
-      }
-      return 0;
+      return value === "Newest" ? dateB - dateA : dateA - dateB;
     });
 
     setBugs(sortedBugs);

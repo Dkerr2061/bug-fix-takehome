@@ -14,6 +14,8 @@ import {
   Button,
   SelectChangeEvent,
 } from "@mui/material";
+import { db } from "../config/firebase";
+import { getDoc, doc } from "firebase/firestore";
 
 interface BugResponse {
   id: string;
@@ -46,8 +48,9 @@ const BugDetail = ({ editBug }: Props) => {
   useEffect(() => {
     const currentBug = async () => {
       try {
-        const res = await fetch(`http://localhost:3000/bugs/${id}`);
-        const data: BugResponse = await res.json();
+        const docRef = doc(db, "bugs", id as string);
+        const res = await getDoc(docRef);
+        const data = { ...res.data(), id: res.id } as BugProps;
         setBug(data);
         setBugToEdit({
           id: data.id,
