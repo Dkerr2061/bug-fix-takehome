@@ -127,4 +127,4 @@ const BugItem = ({ bugs, removeBug }: Props) => {
   );
 };
 
-export default BugItem;
+export { BugItem };

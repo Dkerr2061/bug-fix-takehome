@@ -55,4 +55,4 @@ const FilterSortBar = ({ updateSearchText, sortByDate }: Props) => {
   );
 };
 
-export default FilterSortBar;
+export { FilterSortBar };

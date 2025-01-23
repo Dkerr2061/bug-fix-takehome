@@ -170,4 +170,4 @@ const BugDetail = ({ editBug }: Props) => {
   );
 };
 
-export default BugDetail;
+export { BugDetail };

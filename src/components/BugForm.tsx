@@ -148,4 +148,4 @@ const BugForm = ({ addBug }: BugFormProps) => {
   );
 };
 
-export default BugForm;
+export { BugForm };

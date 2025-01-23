@@ -6,8 +6,8 @@ import {
 } from "react-router-dom";
 import { useEffect, useState } from "react";
 import "./App.css";
-import BugDetail from "./pages/EditBug";
-import BugList from "./components/BugList";
+import { BugDetail } from "./pages/EditBug";
+import { BugList } from "./components/BugList";
 import { BugProps } from "./types/bugTypes";
 import { db } from "./config/firebase";
 import {

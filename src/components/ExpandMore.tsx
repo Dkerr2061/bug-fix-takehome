@@ -8,7 +8,7 @@ interface ExpandMoreProps extends TypographyProps {
   expand: boolean;
 }
 
-export const ExpandMore = styled((props: ExpandMoreProps) => {
+const ExpandMore = styled((props: ExpandMoreProps) => {
   const { expand, ...other } = props;
   return (
     <Typography
@@ -38,3 +38,5 @@ export const ExpandMore = styled((props: ExpandMoreProps) => {
   marginLeft: "auto",
   marginRight: theme.spacing(1),
 }));
+
+export { ExpandMore };

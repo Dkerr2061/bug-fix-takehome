@@ -1,8 +1,8 @@
 import { BugProps } from "../types/bugTypes";
-import BugForm from "./BugForm";
-import BugItem from "./BugItem";
+import { BugForm } from "./BugForm";
+import { BugItem } from "./BugItem";
 import { Box, Paper } from "@mui/material";
-import FilterSortBar from "./FilterSortBar";
+import { FilterSortBar } from "./FilterSortBar";
 
 interface Props {
   bugs: BugProps[];
@@ -77,4 +77,4 @@ const BugList = ({
   );
 };
 
-export default BugList;
+export { BugList };
